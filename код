@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Счётчик мест</title>
+<style>
+body {
+  font-family: "Arial", sans-serif;
+  background: #f3f3f3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+.counter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #2b5243;
+  color: white;
+  border-radius: 12px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.counter {
+  background: linear-gradient(90deg, #ff5500, #ff6a00);
+  color: white;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 26px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+  <div class="counter-box">
+    <div class="title">Свободных мест уменьшается!</div>
+    <div class="counter"><span id="occupied">400</span> / 1000 мест занято</div>
+  </div>
+
+  <script>
+    let occupied = 400;
+    const total = 1000;
+    const el = document.getElementById('occupied');
+
+    setInterval(() => {
+      const increment = Math.random() < 0.5 ? 1 : 2;
+      occupied = Math.min(total, occupied + increment);
+      el.textContent = occupied;
+    }, 15000);
+  </script>
+</body>
+</html>
